@@ -1,0 +1,5 @@
+/* Reset Vite starter styles and let the layout be controlled by Tailwind classes */
+
+#root {
+  min-height: 100vh;
+}

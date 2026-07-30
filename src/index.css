@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* propShield Design System
+   A warm, trustworthy palette for property decisions
+   Primary: Deep teal (trust, stability)
+   Accent: Warm amber (warmth, reassurance)
+*/
+
+@layer base {
+  :root {
+    /* Dark, calm base */
+    --background: 211 33% 6%; /* ~ #0B0F14 */
+    --foreground: 220 13% 90%; /* headings ~ #E5E7EB */
+
+    /* Primary surface */
+    --card: 222 32% 10%; /* ~ #121826 */
+    --card-foreground: 220 13% 90%;
+
+    --popover: 222 32% 10%;
+    --popover-foreground: 220 13% 90%;
+
+    /* Single accent – muted teal */
+    --primary: 172 65% 50%; /* calm teal */
+    --primary-foreground: 210 40% 10%;
+
+    /* Secondary surfaces */
+    --secondary: 215 25% 12%;
+    --secondary-foreground: 220 13% 80%;
+
+    --muted: 215 18% 16%;
+    --muted-foreground: 217 13% 65%; /* body text ~ #9CA3AF */
+
+    /* Use the same teal as accent to keep system restrained */
+    --accent: 172 65% 50%;
+    --accent-foreground: 210 40% 10%;
+
+    /* Status colors – keep close to teal, no loud red/orange */
+    --success: 172 60% 45%;
+    --success-foreground: 210 40% 10%;
+
+    --warning: 35 40% 55%; /* softened amber, rarely used */
+    --warning-foreground: 210 40% 10%;
+
+    --destructive: 0 55% 46%; /* kept for UI consistency, avoid on marketing */
+    --destructive-foreground: 210 40% 10%;
+
+    /* Subtle dividers */
+    --border: 215 28% 17%; /* ~ #1F2937 */
+    --input: 215 28% 17%;
+    --ring: 172 65% 50%;
+
+    --radius: 0.75rem;
+
+    /* Chat-specific tokens (slightly elevated from background) */
+    --chat-user: 215 24% 14%;
+    --chat-assistant: 215 22% 11%;
+    --chat-border: 215 28% 17%;
+
+    /* Hero glow – soft, diffused radial light in teal */
+    --gradient-hero: radial-gradient(
+      circle at 50% -10%,
+      rgba(94, 234, 212, 0.12) 0,
+      rgba(94, 234, 212, 0.05) 32%,
+      transparent 70%
+    );
+    --gradient-warm: none;
+    --gradient-subtle: linear-gradient(
+      180deg,
+      hsl(215 28% 6%) 0%,
+      hsl(215 28% 8%) 100%
+    );
+
+    /* Soft, professional shadows */
+    --shadow-soft: 0 14px 40px -24px hsl(210 40% 2% / 0.6);
+    --shadow-card: 0 18px 45px -30px hsl(210 40% 2% / 0.7);
+    --shadow-elevated: 0 28px 80px -40px hsl(210 40% 2% / 0.8);
+
+    /* Sidebar (if used) */
+    --sidebar-background: 215 28% 6%;
+    --sidebar-foreground: 220 13% 85%;
+    --sidebar-primary: 172 65% 50%;
+    --sidebar-primary-foreground: 210 40% 10%;
+    --sidebar-accent: 215 24% 12%;
+    --sidebar-accent-foreground: 220 13% 85%;
+    --sidebar-border: 215 28% 17%;
+    --sidebar-ring: 172 65% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  /* Hero typography */
+  .hero-heading {
+    color: #e5e7eb;
+    font-weight: 600;
+  }
+
+  .hero-highlight {
+    color: #5eead4;
+    text-shadow: 0 0 18px rgba(94, 234, 212, 0.25);
+  }
+
+  .hero-body {
+    color: #9ca3af;
+    line-height: 1.7;
+  }
+
+  .text-gradient-primary {
+    @apply hero-highlight;
+  }
+
+  .bg-gradient-hero {
+    /* Base matte background plus atmospheric glow */
+    background-color: #0b0f14;
+    background-image: var(--gradient-hero);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-gradient-warm {
+    background: var(--gradient-warm);
+  }
+
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Navbar */
+  .navbar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(11, 15, 20, 0.86);
+    backdrop-filter: blur(16px);
+  }
+
+  .nav-link {
+    color: #9ca3af;
+  }
+
+  .nav-link:hover {
+    color: #e5e7eb;
+  }
+
+  .nav-link-active {
+    color: #e5e7eb;
+    border-bottom: 2px solid #5eead4;
+    box-shadow: 0 0 12px rgba(94, 234, 212, 0.45);
+  }
+
+  /* Primary CTA button to match reference */
+  .btn-hero {
+    background-color: #5eead4;
+    color: #0b0f14;
+    border-radius: 12px;
+    box-shadow:
+      0 8px 30px rgba(94, 234, 212, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-hero:hover {
+    background-color: #6ff3e0;
+    box-shadow:
+      0 10px 36px rgba(94, 234, 212, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  /* Feature row cards under hero */
+  .feature-row-card {
+    background-color: #0f1623;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  }
+
+  /* Global fixed background using provided image */
+  .background-root {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow: hidden;
+  }
+
+  .background-root::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    /* Try the external hero image first; fall back to the soft radial gradient
+       if the image is not present. Using a comma-separated list ensures the
+       second value is used when the first fails to load. */
+    background-image: url("/hero-background.png"), var(--gradient-hero);
+    background-size: cover, cover;       /* maintain aspect ratio and cover viewport */
+    background-position: center, center; /* keep focal point centered */
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed; /* fixed while scrolling */
+  }
+
+  .background-root::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.4); /* subtle dark overlay for readability */
+  }
+
+  .background-content {
+    position: relative;
+    z-index: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-gentle {
+    animation: pulseGentle 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulseGentle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+}

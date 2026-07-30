@@ -1,0 +1,7 @@
+project_id = "ozvmwdvcutotobhfvydk"
+
+[functions.chat]
+verify_jwt = false
+
+[functions.location-compare]
+verify_jwt = false
